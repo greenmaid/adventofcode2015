@@ -14,15 +14,8 @@ def read_input(path: str) -> str:
     return str
 
 
-
-def run1(str):
-    floor = 0
-    for c in str:
-        if c == '(':
-            floor +=1
-        if c == ')':
-            floor -=1
-    return floor
+def run1(data):
+    return data.count('(') - data.count(')')
 
 data = read_input(INPUT)
 result1 = run1(data)
