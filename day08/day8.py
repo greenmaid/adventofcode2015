@@ -36,7 +36,6 @@ def run1(lines: List[str]):
     return printed_char_count, memory_char_count
 
 
-
 #INPUT = f"{SCRIPT_DIR}/input_test.txt"
 INPUT = f"{SCRIPT_DIR}/input.txt"
 data = read_input(INPUT)
@@ -44,7 +43,6 @@ printed_char_count, memory_char_count = run1(data)
 print("Result1 = ", printed_char_count - memory_char_count)
 
 # =========================================
-
 
 
 def run2(lines: List[str]):

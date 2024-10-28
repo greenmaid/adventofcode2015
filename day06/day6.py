@@ -17,8 +17,8 @@ def parse_line(line):
         case ["turn", action, upper_corner, "through", bottom_corner] | [action, upper_corner, "through", bottom_corner]:
             [x1, y1] = upper_corner.split(",")
             [x2, y2] = bottom_corner.split(",")
-            x1 = int(x1); x2 = int(x2); 
-            y1 = int(y1); y2 = int(y2); 
+            x1 = int(x1); x2 = int(x2)
+            y1 = int(y1); y2 = int(y2)
         case _:
             print("ERROR", line)
     return action, x1, y1, x2, y2
@@ -71,7 +71,7 @@ def run2(lines: List[str]):
                     board[x][y] -= 1
                 if action == "toggle":
                     board[x][y] += 2
-    
+
     return count_board(board)
 
 # INPUT = f"{SCRIPT_DIR}/input_test.txt"

@@ -51,7 +51,7 @@ def evaluate(value, wires):
                 result = ~ evaluate(definition[1], wires)
             case _:
                 result = evaluate(definition, wires)
-        
+
         result = result & 0xffff
         CACHE[value] = result
         return result

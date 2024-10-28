@@ -36,14 +36,15 @@ def is_good(line):
         return True
     return False
 
-    
+
 def run1(lines: List[str]):
     count = 0
     for line in lines:
         if is_good(line):
             count += 1
     return count
-    
+
+
 INPUT = f"{SCRIPT_DIR}/input.txt"
 data = read_input(INPUT)
 

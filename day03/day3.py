@@ -54,7 +54,6 @@ class Santa:
     def go_east(self):
         self.location = (self.location[0], self.location[1]+1)
         self.visited.add(self.location)
-    
 
 
 def run2(input):
@@ -76,7 +75,7 @@ def run2(input):
             current_moving.go_north()
         if c == "v":
             current_moving.go_south()
-        
+
     visited = santa.visited.union(robo_santa.visited)
     return len(visited)
 
