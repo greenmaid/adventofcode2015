@@ -133,10 +133,8 @@ def run2(recipe, ingredients):
             replace_ingredient(best[0][0], best[0][1], ingredients, recipe)
         else:
             break
-        
+
     return recipe, count_score(recipe)
-
-
 
 
 recipe2, result2 = run2(recipe1, ingredients)
