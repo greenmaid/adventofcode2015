@@ -33,16 +33,16 @@ def run1(containers, target):
 #INPUT, TARGET = f"{SCRIPT_DIR}/input_test.txt", 25
 INPUT, TARGET = f"{SCRIPT_DIR}/input.txt", 150
 containers = read_input(INPUT)
-possibles, result1 = run1(containers, TARGET)
+possible_combinations, result1 = run1(containers, TARGET)
 print("Result1 = ", result1)
 
 # =========================================
 
 
-def run2(possibles):
-    minimum = len(possibles[0])
+def run2(possible_combinations):
+    minimum = len(possible_combinations[0])
     min_count = 0
-    for p in possibles:
+    for p in possible_combinations:
         if len(p) < minimum:
             minimum = len(p)
             min_count = 1
@@ -51,5 +51,5 @@ def run2(possibles):
     return minimum, min_count
 
 
-_, result2 = run2(possibles)
+_, result2 = run2(possible_combinations)
 print("Result2 = ", result2)
