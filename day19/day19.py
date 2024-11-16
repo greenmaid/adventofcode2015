@@ -64,8 +64,6 @@ def parse_reverse(data):
     return reverse_replacement_map, molecule
 
 
-CACHE = set()
-
 def run2(replacements, molecule):
     results = []
     for _ in range(3):   # Let's do the computation 5 times to ensure to converge towards best solution
