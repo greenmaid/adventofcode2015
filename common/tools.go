@@ -30,3 +30,12 @@ func ParseLineAsBits(line string) []int {
 func convertRuneToInt(rune rune) int {
 	return int(rune - '0')
 }
+
+// classical map function
+func Map[T, V any](ts []T, fn func(T) V) []V {
+	result := make([]V, len(ts))
+	for i, t := range ts {
+		result[i] = fn(t)
+	}
+	return result
+}

@@ -6,7 +6,7 @@ import (
 )
 
 const DAY = "xx"
-const TEST = false
+const TEST = true
 
 func main() {
 
