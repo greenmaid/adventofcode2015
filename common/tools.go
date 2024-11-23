@@ -1,7 +1,9 @@
 package common
 
 import (
+	"encoding/json"
 	"log"
+	"reflect"
 	"time"
 )
 
@@ -38,4 +40,20 @@ func Map[T, V any](ts []T, fn func(T) V) []V {
 		result[i] = fn(t)
 	}
 	return result
+}
+
+// easily deepcopy struct (only exported Fields !)
+// https://stackoverflow.com/questions/50269322/how-to-copy-struct-and-dereference-all-pointers
+func DeepCopy(v interface{}) (interface{}, error) {
+	data, err := json.Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+
+	vptr := reflect.New(reflect.TypeOf(v))
+	err = json.Unmarshal(data, vptr.Interface())
+	if err != nil {
+		return nil, err
+	}
+	return vptr.Elem().Interface(), err
 }
