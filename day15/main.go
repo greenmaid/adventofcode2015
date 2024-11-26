@@ -42,7 +42,7 @@ type Ingredient struct {
 type Recipe map[Ingredient]int
 
 func (R Recipe) getScore() int {
-	total := Ingredient{"total", 0, 0, 0, 0, 0}
+	total := Ingredient{name: "total"}
 	for ingredient, count := range R {
 		if count <= 0 && ingredient.name != "calories" {
 			return 0
