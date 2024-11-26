@@ -42,18 +42,20 @@ type Ingredient struct {
 type Recipe map[Ingredient]int
 
 func (R Recipe) getScore() int {
-	total := Ingredient{}
+	capacity := 0
+	durability := 0
+	flavor := 0
+	texture := 0
 	for ingredient, count := range R {
 		if count <= 0 && ingredient.name != "calories" {
 			return 0
 		}
-		total.capacity += ingredient.capacity * count
-		total.durability += ingredient.durability * count
-		total.flavor += ingredient.flavor * count
-		total.texture += ingredient.texture * count
-		total.calories += ingredient.calories * count
+		capacity += ingredient.capacity * count
+		durability += ingredient.durability * count
+		flavor += ingredient.flavor * count
+		texture += ingredient.texture * count
 	}
-	return total.capacity * total.durability * total.flavor * total.texture
+	return capacity * durability * flavor * texture
 }
 
 func (R Recipe) count() int {
