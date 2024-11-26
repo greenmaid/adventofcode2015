@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"reflect"
+	"slices"
 	"time"
 )
 
@@ -56,4 +57,20 @@ func DeepCopy(v interface{}) (interface{}, error) {
 		return nil, err
 	}
 	return vptr.Elem().Interface(), err
+}
+
+// get all permutations of an array
+func Permutations(array []interface{}) [][]interface{} {
+	var result [][]interface{}
+	if len(array) <= 1 {
+		result = append(result, array)
+		return result
+	}
+	for _, perm := range Permutations(array[1:]) {
+		for i := 0; i < len(array); i++ {
+			elem := slices.Concat(perm[:i], array[0:1], perm[i:])
+			result = append(result, elem)
+		}
+	}
+	return result
 }

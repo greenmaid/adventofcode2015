@@ -8,9 +8,9 @@ dummy:	# fake target to avoid erreur manipuling $(args)
 
 run_day:
 	@echo ">> Python"
-	@python ./day$(args)/day*.py
+	@time python ./day$(args)/day*.py
 	@echo ">> Golang"
-	@go run ./day$(args)/main.go
+	@time go run ./day$(args)/main.go
 
 run_all_python:
 	@time for file in `ls ./day*/day*.py`; do echo -e "\n>> $$file"; python $$file; done

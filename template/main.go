@@ -27,11 +27,13 @@ func main() {
 }
 
 func step1(data []string) int {
+	fmt.Println(data)
 	result := 0
 	return result
 }
 
 func step2(data []string) int {
+	fmt.Println(data)
 	result := 0
 	return result
 }
