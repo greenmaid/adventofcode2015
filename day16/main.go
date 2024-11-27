@@ -87,31 +87,28 @@ func step2(aunts []Aunt, mysteryAuntProperties map[string]int) int {
 		validAunts := []Aunt{}
 		for _, aunt := range potentialAunts {
 			val, ok := aunt[prop]
-			if !ok {
-				validAunts = append(validAunts, aunt)
-				continue
-			}
-			switch {
-			case prop == "cats" || prop == "trees":
-				if val <= expected {
-					// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected more than", expected)
-					continue
-				}
-			case prop == "pomeranians" || prop == "goldfish":
-				if val >= expected {
-					// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected less than", expected)
-					continue
-				}
-			default:
-				if val != expected {
-					// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected", expected)
-					continue
+			if ok {
+				switch {
+				case prop == "cats" || prop == "trees":
+					if val <= expected {
+						// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected more than", expected)
+						continue
+					}
+				case prop == "pomeranians" || prop == "goldfish":
+					if val >= expected {
+						// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected less than", expected)
+						continue
+					}
+				default:
+					if val != expected {
+						// fmt.Println(aunt["name"], "ejected because", prop, "=", val, "expected", expected)
+						continue
+					}
 				}
 			}
 			validAunts = append(validAunts, aunt)
 		}
 		potentialAunts = validAunts
 	}
-	fmt.Println(potentialAunts)
 	return potentialAunts[0]["name"]
 }
