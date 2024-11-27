@@ -18,12 +18,17 @@ func main() {
 	}
 
 	data := common.ReadFileByLine(filePath)
+	parsed := parseData(data)
 
-	result1 := step1(data)
+	result1 := step1(parsed)
 	fmt.Println("Result1 = ", result1)
 
-	result2 := step2(data)
+	result2 := step2(parsed)
 	fmt.Println("Result2 = ", result2)
+}
+
+func parseData(data []string) []string{
+	return data
 }
 
 func step1(data []string) int {
