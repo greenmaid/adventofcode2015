@@ -27,7 +27,7 @@ func main() {
 	fmt.Println("Result2 = ", result2)
 }
 
-func parseData(data []string) []string{
+func parseData(data []string) []string {
 	return data
 }
 

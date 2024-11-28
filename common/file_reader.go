@@ -2,6 +2,7 @@ package common
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -39,4 +40,29 @@ func ReadFileByLine(path string) []string {
 		dat = append(dat, scanner.Text())
 	}
 	return dat
+}
+
+func ReadFileToGrid(path string) [][]rune {
+	file, err := os.Open(path)
+	Check(err)
+	defer file.Close()
+	var content [][]rune
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		scannedText := []rune(scanner.Text())
+		content = append(content, scannedText)
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return content
+}
+
+func DisplayGrid(grid interface{}) {
+	if rows, ok := grid.([][]rune); ok {
+		for _, row := range rows {
+			fmt.Printf("%s\n", string(row))
+		}
+	}
+	fmt.Println("")
 }
