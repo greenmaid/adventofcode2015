@@ -66,22 +66,22 @@ def parse_reverse(data):
 
 def run2(replacements, molecule):
     results = []
-    for _ in range(3):   # Let's do the computation 5 times to ensure to converge towards best solution
-        steps = 0
-        current = molecule
-        while current != "e":
-            steps += 1
-            possible_next, _ = run1(replacements, current)
-            if ("e" in current and len(current) != 1) or (len(possible_next) == 0):
-                steps = 0
-                current = molecule
-            else:
-                current = random.choice(list(possible_next))
-                # print(current)
-        results.append(steps)
-    return min(results)
+    tries = 1
+    steps = 0
+    current = molecule
+    while current != "e":
+        steps += 1
+        possible_next, _ = run1(replacements, current)
+        if ("e" in current and len(current) != 1) or (len(possible_next) == 0):
+            steps = 0
+            tries += 1
+            current = molecule
+        else:
+            current = random.choice(list(possible_next))
+            # print(current)
+    return steps, tries
 
    
 reverse_replacements, molecule = parse_reverse(data)
-result2 = run2(reverse_replacements, molecule)
-print("Result2 = ", result2)
+result2, tries = run2(reverse_replacements, molecule)
+print("Result2 = ", result2, f"after {tries} tries")

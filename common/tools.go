@@ -5,6 +5,7 @@ import (
 	"log"
 	"reflect"
 	"slices"
+	"strings"
 	"time"
 )
 
@@ -73,4 +74,20 @@ func Permutations(array []interface{}) [][]interface{} {
 		}
 	}
 	return result
+}
+
+func FindAllSubstringIndexes(s string, sub string) []int {
+	indexes := []int{}
+	idx := 0
+	for {
+		next := strings.Index(s[idx:], sub)
+		if next >= 0 {
+			indexes = append(indexes, idx+next)
+			idx += next + 1
+			continue
+		}
+		break
+
+	}
+	return indexes
 }
